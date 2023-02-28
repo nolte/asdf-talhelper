@@ -50,6 +50,14 @@ talhelper --version
 Check [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on how to
 install & manage versions.
 
+# Development
+
+export ASDF_INSTALL_VERSION=1.6.1
+export ASDF_DOWNLOAD_PATH=/tmp/asdf-debug/downloads/
+export ASDF_INSTALL_PATH=/tmp/asdf-debug/bin/
+export ASDF_INSTALL_TYPE=version
+./bin/download
+
 # Contributing
 
 Contributions of any kind welcome! See the [contributing guide](contributing.md).
