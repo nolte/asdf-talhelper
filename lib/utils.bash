@@ -67,7 +67,7 @@ list_github_releases() {
 list_all_versions() {
   # TODO: Adapt this. By default we simply list the tag names from GitHub releases.
   # Change this function if talhelper has other means of determining installable versions.
-  list_github_tags
+  list_github_releases
 }
 
 get_download_url() {
