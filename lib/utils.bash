@@ -20,7 +20,6 @@ if [ -n "${GITHUB_API_TOKEN:-}" ]; then
   curl_opts=("${curl_opts[@]}" -H "Authorization: token $GITHUB_API_TOKEN")
 fi
 
-
 # get the OS family name
 get_os() {
   uname | tr '[:upper:]' '[:lower:]'
@@ -44,14 +43,12 @@ get_arch() {
   esac
 }
 
-
 get_release_talosctl_asset_name() {
   local -r os=$(get_os)
   local -r arch=$(get_arch)
 
   echo "${TOOL_NAME}_${os}_${arch}.tar.gz"
 }
-
 
 sort_versions() {
   sed 'h; s/[+-]/./g; s/.p\([[:digit:]]\)/.z\1/; s/$/.z/; G; s/\n/ /' |
@@ -62,7 +59,6 @@ list_github_releases() {
   url="https://api.github.com/repos/$repository/releases"
   curl "${curl_opts[@]}" -C - "$url" | grep tag_name | sed 's/"tag_name": //g;s/"//g;s/,//g;s/v//g' || fail "Could get release informations from $url"
 }
-
 
 list_all_versions() {
   # TODO: Adapt this. By default we simply list the tag names from GitHub releases.
@@ -85,7 +81,6 @@ download_release() {
 
   # TODO: Adapt the release URL convention for talhelper
   url="$(get_download_url $version $(get_release_talosctl_asset_name))"
-
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
